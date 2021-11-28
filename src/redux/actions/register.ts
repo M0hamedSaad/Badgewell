@@ -9,14 +9,19 @@ export const signUp = (data: IUser) => {
     try {
       const resp = await API.post(`${BASE_URL}/auth/signup`, data);
       if (resp.data) {
-        dispatch({ type: SIGNUP_SUCCESS, register: true });
+        dispatch({
+          type: SIGNUP_SUCCESS,
+          register: true
+        });
       }
     }
     catch (err: any) {
-      console.log({ err });
-      console.log(err.response.data.message);
+      // console.log({ err });
       showToast('ERROR', err.response.data.message, 'error', true)
-      dispatch({ type: SIGNUP_SUCCESS, register: false });
+      dispatch({
+        type: SIGNUP_SUCCESS,
+        register: false
+      });
     }
   };
 };
